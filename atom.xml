@@ -4,7 +4,7 @@
   <title><![CDATA[Aztack's Blog]]></title>
   <link href="http://aztack.github.com/atom.xml" rel="self"/>
   <link href="http://aztack.github.com/"/>
-  <updated>2012-08-22T16:36:23+08:00</updated>
+  <updated>2012-08-22T16:38:26+08:00</updated>
   <id>http://aztack.github.com/</id>
   <author>
     <name><![CDATA[aztack]]></name>
@@ -18,9 +18,7 @@
     <link href="http://aztack.github.com/blog/2012/08/16/first-blog/"/>
     <updated>2012-08-16T14:55:00+08:00</updated>
     <id>http://aztack.github.com/blog/2012/08/16/first-blog</id>
-    <content type="html"><![CDATA[<h1>Define methods in JavaScript and Ruby</h1>
-
-<h2>Define singleton method</h2>
+    <content type="html"><![CDATA[<h2>Define singleton method</h2>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
