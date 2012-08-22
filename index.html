@@ -9,18 +9,10 @@
   <meta name="author" content="aztack">
 
   
-  <meta name="description" content="Define singleton method 1
-2
-3
-4
-var obj = {};
-obj.greeting = function(){ console.log(&#39;hi&#39;);
-}; 1
-2
-3
-4
-obj = {}
-def obj.greeting puts &#39;hi &hellip;">
+  <meta name="description" content="Windows 7 + ruby 1.9.3p125 (2012-02-16) 先安装 ruby 1.9.3和DevKit
+然后git clone octopress
+octopress目录下有个rakefile
+rake -T查看可用的task rake new_post[&#8220; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -36,6 +28,7 @@ def obj.greeting puts &#39;hi &hellip;">
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Aztack's Blog" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -46,10 +39,17 @@ def obj.greeting puts &#39;hi &hellip;">
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">Aztack's Blog</a></h1>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">Aztack</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">'s Blog</a></h1>
   
     <h2>Look at the sky, it's so beautiful</h2>
   
+  <div class="clear"></div>
 </hgroup>
 
 </header>
@@ -68,6 +68,7 @@ def obj.greeting puts &#39;hi &hellip;">
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
 </ul>
 
 </nav>
@@ -81,7 +82,84 @@ def obj.greeting puts &#39;hi &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/08/16/first-blog/">Define Method in JavaScript and Ruby</a></h1>
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2012/08/22/setup-octopress-on-windows/">Setup Octopress on Windows 7</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-22T16:42:00+08:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> <em>Windows 7 + ruby 1.9.3p125 (2012-02-16)</em></p>
+
+<p>先安装 ruby 1.9.3和DevKit
+然后git clone octopress
+octopress目录下有个rakefile
+rake -T查看可用的task</p>
+
+<p>rake new_post[&#8220;post title&#8221;]
+在/source/_post下生成一个markdown文件，
+编辑markedown文件为blog内容</p>
+
+<p>rake generate将在_deploy目录下生成静态文件
+rake deploy将生成的静态文件push到github上</p>
+
+<p>其中在generate的时候可能由于python的版本问题出错：</p>
+
+<p>当增加如下code block 后，</p>
+
+<figure class='code'><figcaption><span>code block</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="sb">```language-name</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>使用octopress的rake generate生成静态文件时，提示无法打开:</p>
+
+<figure class='code'><figcaption><span>error</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Could not open library ...python26.dll
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>原因是python的版本不对。
+下载了一个activepython2.7.2.5后，设置好环境变量就OK了
+octopress的语法高亮是gem rubypython调用python的pygments做得</p>
+
+<h2>参考：</h2>
+
+<p><a href="http://www.cnblogs.com/rubylouvre/archive/2012/06/10/2543744.html" title="在github上用octopress搭建博客过程纪要">http://www.cnblogs.com/rubylouvre/archive/2012/06/10/2543744.html</a>
+<a href="http://ihacklog.com/post/how-to-setup-an-octopress-blog-on-github.html" title="用Octopress搭建基于github的博客">http://ihacklog.com/post/how-to-setup-an-octopress-blog-on-github.html</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2012/08/16/Define-method-in-JavaScript-and-Ruby/">Define Method in JavaScript and Ruby</a></h1>
+      
     
     
       <p class="meta">
@@ -149,7 +227,11 @@ def obj.greeting puts &#39;hi &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/08/16/first-blog/">Define method in JavaScript and Ruby</a>
+        <a href="/blog/2012/08/22/setup-octopress-on-windows/">Setup Octopress on Windows 7</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/08/16/Define-method-in-JavaScript-and-Ruby/">Define method in JavaScript and Ruby</a>
       </li>
     
   </ul>
@@ -159,7 +241,21 @@ def obj.greeting puts &#39;hi &hellip;">
 
 
 
-
+<section>  
+  <h1>Weibo.com</h1>  
+  <ul id="weibo">  
+    <li>  
+      <iframe   
+        width="100%"   
+        height="550"   
+        class="share_self"   
+        frameborder="0"   
+        scrolling="no"   
+        src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1435993714&verifier=b3700b1c&dpc=1">  
+      </iframe>  
+    </li>  
+  </ul>  
+</section>
   
 </aside>
 

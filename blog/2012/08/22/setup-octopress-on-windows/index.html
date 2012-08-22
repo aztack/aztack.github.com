@@ -5,13 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - Aztack's Blog</title>
+  <title>Setup Octopress on Windows 7 - Aztack's Blog</title>
   <meta name="author" content="aztack">
 
   
-  <meta name="description" content="Blog Archive 2012 Setup Octopress on Windows 7
-Aug 22 2012 Define method in JavaScript and Ruby
-Aug 16 2012 Recent Posts Setup Octopress on Windows &hellip;">
+  <meta name="description" content="Windows 7 + ruby 1.9.3p125 (2012-02-16) 先安装 ruby 1.9.3和DevKit
+然后git clone octopress
+octopress目录下有个rakefile
+rake -T查看可用的task rake new_post[&#8220; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +21,7 @@ Aug 16 2012 Recent Posts Setup Octopress on Windows &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://aztack.github.com/blog/archives/">
+  <link rel="canonical" href="http://aztack.github.com/blog/2012/08/22/setup-octopress-on-windows/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -74,41 +75,117 @@ Aug 16 2012 Recent Posts Setup Octopress on Windows &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Blog Archive</h1>
+    
+      
+        <h1 class="entry-title">Setup Octopress on Windows 7</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-22T16:42:00+08:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2012</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives">
 
 
+<div class="entry-content"><p> <em>Windows 7 + ruby 1.9.3p125 (2012-02-16)</em></p>
 
-  
-  <h2>2012</h2>
+<p>先安装 ruby 1.9.3和DevKit
+然后git clone octopress
+octopress目录下有个rakefile
+rake -T查看可用的task</p>
 
-<article>
-  
-<h1><a href="/blog/2012/08/22/setup-octopress-on-windows/">Setup Octopress on Windows 7</a></h1>
-<time datetime="2012-08-22T16:42:00+08:00" pubdate><span class='month'>Aug</span> <span class='day'>22</span> <span class='year'>2012</span></time>
+<p>rake new_post[&#8220;post title&#8221;]
+在/source/_post下生成一个markdown文件，
+编辑markedown文件为blog内容</p>
+
+<p>rake generate将在_deploy目录下生成静态文件
+rake deploy将生成的静态文件push到github上</p>
+
+<p>其中在generate的时候可能由于python的版本问题出错：</p>
+
+<p>当增加如下code block 后，</p>
+
+<figure class='code'><figcaption><span>code block</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="sb">```language-name</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-</article>
+<p>使用octopress的rake generate生成静态文件时，提示无法打开:</p>
+
+<figure class='code'><figcaption><span>error</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Could not open library ...python26.dll
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p>原因是python的版本不对。
+下载了一个activepython2.7.2.5后，设置好环境变量就OK了
+octopress的语法高亮是gem rubypython调用python的pygments做得</p>
 
-<article>
-  
-<h1><a href="/blog/2012/08/16/Define-method-in-JavaScript-and-Ruby/">Define method in JavaScript and Ruby</a></h1>
-<time datetime="2012-08-16T14:55:00+08:00" pubdate><span class='month'>Aug</span> <span class='day'>16</span> <span class='year'>2012</span></time>
+<h2>参考：</h2>
 
-
-</article>
-
+<p><a href="http://www.cnblogs.com/rubylouvre/archive/2012/06/10/2543744.html" title="在github上用octopress搭建博客过程纪要">http://www.cnblogs.com/rubylouvre/archive/2012/06/10/2543744.html</a>
+<a href="http://ihacklog.com/post/how-to-setup-an-octopress-blog-on-github.html" title="用Octopress搭建基于github的博客">http://ihacklog.com/post/how-to-setup-an-octopress-blog-on-github.html</a></p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">aztack</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-22T16:42:00+08:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://aztack.github.com/blog/2012/08/22/setup-octopress-on-windows/" data-via="" data-counturl="http://aztack.github.com/blog/2012/08/22/setup-octopress-on-windows/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2012/08/16/Define-method-in-JavaScript-and-Ruby/" title="Previous Post: Define method in JavaScript and Ruby">&laquo; Define method in JavaScript and Ruby</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
 </div>
