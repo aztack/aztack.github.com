@@ -4,7 +4,7 @@
   <title><![CDATA[Aztack's Blog]]></title>
   <link href="http://aztack.github.com/atom.xml" rel="self"/>
   <link href="http://aztack.github.com/"/>
-  <updated>2012-08-22T18:59:33+08:00</updated>
+  <updated>2012-08-23T13:35:56+08:00</updated>
   <id>http://aztack.github.com/</id>
   <author>
     <name><![CDATA[aztack]]></name>
@@ -69,9 +69,37 @@ octopress的语法高亮是gem rubypython调用python的pygments做得</p>
     <link href="http://aztack.github.com/blog/2012/08/16/Define-method-in-JavaScript-and-Ruby/"/>
     <updated>2012-08-16T14:55:00+08:00</updated>
     <id>http://aztack.github.com/blog/2012/08/16/Define-method-in-JavaScript-and-Ruby</id>
-    <content type="html"><![CDATA[<h2>Define singleton method</h2>
+    <content type="html"><![CDATA[<p>In javascript, function can be attached onto any <em>object</em>;
+<em>object</em> attributes can be anything,when it is a function, it become a method of that <em>object</em>.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p>If <em>object</em> is prototype of a function, the attached function becomes
+instance method of that function(`class&#8217;).</p>
+
+<p>In ruby, all methods are reside in instance of <strong>Class</strong>:</p>
+
+<ul>
+<li>intance methods are in object.class;</li>
+<li>singleton methods are in object.eigenclass. in code <em>class &lt;&lt; object</em>.in another word, eigenclass;</li>
+<li>class methods are in eigenclass of object.class, in code <em>object.class.eigenclass</em></li>
+</ul>
+
+
+<figure class='code'><figcaption><span>Object#eigenclass</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Object</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">eigenclass</span>
+</span><span class='line'>      <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span><span class="p">;</span><span class="nb">self</span><span class="p">;</span><span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Define <strong>singleton</strong> method</h2>
+
+<figure class='code'><figcaption><span>define singleton method in javascript</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -84,13 +112,53 @@ octopress的语法高亮是gem rubypython调用python的pygments做得</p>
 
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>define singleton method in ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">obj</span> <span class="o">=</span> <span class="p">{}</span>
 </span><span class='line'><span class="k">def</span> <span class="nc">obj</span><span class="o">.</span><span class="nf">greeting</span>
 </span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;hi&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Define <strong>instance</strong> method</h2>
+
+<figure class='code'><figcaption><span>define instance method in javascript</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">Clazz</span><span class="p">(){}</span>
+</span><span class='line'><span class="nx">Clazz</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">instanceMethod</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>define instance method in ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Clazz</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">instanceMethod</span><span class="p">;</span><span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Define <strong>class</strong> method</h2>
+
+<figure class='code'><figcaption><span>define class method in javascript</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">Clazz</span><span class="p">(){}</span>
+</span><span class='line'><span class="nx">Clazz</span><span class="p">.</span><span class="nx">classMethod</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>define class method in ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Clazz</span>
+</span><span class='line'>  <span class="n">define</span> <span class="nb">self</span><span class="o">.</span><span class="n">classMethod</span><span class="p">;</span><span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 

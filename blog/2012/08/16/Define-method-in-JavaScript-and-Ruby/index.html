@@ -9,18 +9,8 @@
   <meta name="author" content="aztack">
 
   
-  <meta name="description" content="Define singleton method 1
-2
-3
-4
-var obj = {};
-obj.greeting = function(){ console.log(&#39;hi&#39;);
-}; 1
-2
-3
-4
-obj = {}
-def obj.greeting puts &#39;hi &hellip;">
+  <meta name="description" content="In javascript, function can be attached onto any object;
+object attributes can be anything,when it is a function, it become a method of that object. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -110,14 +100,44 @@ def obj.greeting puts &#39;hi &hellip;">
 
 <time datetime="2012-08-16T14:55:00+08:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
         
+         | <a href="#disqus_thread">Comments</a>
+        
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>Define singleton method</h2>
+<div class="entry-content"><p>In javascript, function can be attached onto any <em>object</em>;
+<em>object</em> attributes can be anything,when it is a function, it become a method of that <em>object</em>.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p>If <em>object</em> is prototype of a function, the attached function becomes
+instance method of that function(`class&#8217;).</p>
+
+<p>In ruby, all methods are reside in instance of <strong>Class</strong>:</p>
+
+<ul>
+<li>intance methods are in object.class;</li>
+<li>singleton methods are in object.eigenclass. in code <em>class &lt;&lt; object</em>.in another word, eigenclass;</li>
+<li>class methods are in eigenclass of object.class, in code <em>object.class.eigenclass</em></li>
+</ul>
+
+
+<figure class='code'><figcaption><span>Object#eigenclass</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Object</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">eigenclass</span>
+</span><span class='line'>      <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span><span class="p">;</span><span class="nb">self</span><span class="p">;</span><span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Define <strong>singleton</strong> method</h2>
+
+<figure class='code'><figcaption><span>define singleton method in javascript</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -130,13 +150,53 @@ def obj.greeting puts &#39;hi &hellip;">
 
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>define singleton method in ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">obj</span> <span class="o">=</span> <span class="p">{}</span>
 </span><span class='line'><span class="k">def</span> <span class="nc">obj</span><span class="o">.</span><span class="nf">greeting</span>
 </span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;hi&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Define <strong>instance</strong> method</h2>
+
+<figure class='code'><figcaption><span>define instance method in javascript</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">Clazz</span><span class="p">(){}</span>
+</span><span class='line'><span class="nx">Clazz</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">instanceMethod</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>define instance method in ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Clazz</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">instanceMethod</span><span class="p">;</span><span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Define <strong>class</strong> method</h2>
+
+<figure class='code'><figcaption><span>define class method in javascript</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">Clazz</span><span class="p">(){}</span>
+</span><span class='line'><span class="nx">Clazz</span><span class="p">.</span><span class="nx">classMethod</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>define class method in ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Clazz</span>
+</span><span class='line'>  <span class="n">define</span> <span class="nb">self</span><span class="o">.</span><span class="n">classMethod</span><span class="p">;</span><span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -192,11 +252,31 @@ def obj.greeting puts &#39;hi &hellip;">
   </footer>
 </article>
 
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
 </div>
 
 <aside class="sidebar">
   
-    <section>
+    <section>  
+  <h1>Weibo.com</h1>  
+  <ul id="weibo">  
+    <li>  
+      <iframe   
+        width="100%"   
+        height="550"   
+        class="share_self"   
+        frameborder="0"   
+        scrolling="no"   
+        src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1435993714&verifier=b3700b1c&dpc=1">  
+      </iframe>  
+    </li>  
+  </ul>  
+</section><section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
@@ -211,25 +291,40 @@ def obj.greeting puts &#39;hi &hellip;">
   </ul>
 </section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/aztack">@aztack</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
 
-
-
-
-<section>  
-  <h1>Weibo.com</h1>  
-  <ul id="weibo">  
-    <li>  
-      <iframe   
-        width="100%"   
-        height="550"   
-        class="share_self"   
-        frameborder="0"   
-        scrolling="no"   
-        src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1435993714&verifier=b3700b1c&dpc=1">  
-      </iframe>  
-    </li>  
-  </ul>  
+        github.showRepos({
+            user: 'aztack',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
 </section>
+
+
+
+
+
+
   
 </aside>
 
@@ -243,6 +338,22 @@ def obj.greeting puts &#39;hi &hellip;">
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'aztackblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://aztack.github.com/blog/2012/08/16/Define-method-in-JavaScript-and-Ruby/';
+        var disqus_url = 'http://aztack.github.com/blog/2012/08/16/Define-method-in-JavaScript-and-Ruby/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 
