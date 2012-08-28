@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | Aztack's Blog]]></title>
   <link href="http://aztack.github.com/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://aztack.github.com/"/>
-  <updated>2012-08-23T13:59:11+08:00</updated>
+  <updated>2012-08-28T16:13:27+08:00</updated>
   <id>http://aztack.github.com/</id>
   <author>
     <name><![CDATA[aztack]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress failed to read_yaml]]></title>
+    <link href="http://aztack.github.com/blog/2012/08/28/octopress-failed-to-read-yaml/"/>
+    <updated>2012-08-28T16:06:00+08:00</updated>
+    <id>http://aztack.github.com/blog/2012/08/28/octopress-failed-to-read-yaml</id>
+    <content type="html"><![CDATA[<p>Octopress failed to read_yaml if your markdown file is GBK encoding.
+edit <strong>Ruby1.9.3\lib\ruby\gems\1.9.1\gems\jekyll-0.11.2\lib\jekyll\convertible.rb</strong>
+as follow</p>
+
+<p>``` ruby convertible.rb line#29
+def read_yaml(base, name)
+  self.content = File.read(File.join(base, name)).force_encoding('utf-8')</p>
+
+<p>  if self.content =~ /<sup>(---\s<em>\n.</em>?\n?)<sup>(---\s*$\n?)/m</sup></sup></p>
+
+<pre><code>self.content = $POSTMATCH
+
+begin
+  self.data = YAML.load($1)
+rescue =&gt; e
+  puts "YAML Exception reading #{name}: #{e.message}"
+end
+</code></pre>
+
+<p>  end</p>
+
+<p>  self.data ||= {}
+end
+```</p>
+
+<p>force_encoding will do the trick.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Setup Octopress on Windows 7]]></title>
@@ -25,6 +59,19 @@
 然后git clone octopress
 octopress目录下有个rakefile
 rake -T查看可用的task</p>
+
+<!-- <div id="bmap_471" class="bmap" style="width:300px;height:400px;">
+</div>
+<script type="javascript">
+$(function(){
+debugger;
+var map = new BMap.Map("bmap_471");
+var point = new BMap.Point(116.404, 39.915);
+map.centerAndZoom(point,15);
+});
+</script>
+ -->
+
 
 <p>rake new_post["post title"]
 在/source/_post下生成一个markdown文件，

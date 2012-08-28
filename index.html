@@ -9,11 +9,8 @@
   <meta name="author" content="aztack">
 
   
-  <meta name="description" content="Windows 7 + ruby 1.9.3p125 (2012-02-16)
-先安装 ruby 1.9.3和DevKit
-然后git clone octopress
-octopress目录下有个rakefile
-rake -T查看可用的task rake new_post[&#8220; &hellip;">
+  <meta name="description" content="Octopress failed to read_yaml if your markdown file is GBK encoding.
+edit Ruby1.9.3\lib\ruby\gems\1.9.1\gems\jekyll-0.11.2\lib\jekyll\convertible.rb &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -112,6 +109,144 @@ rake -T查看可用的task rake new_post[&#8220; &hellip;">
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2012/08/28/octopress-failed-to-read-yaml/">Octopress Failed to Read_yaml</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-28T16:06:00+08:00" pubdate data-updated="true">Aug 28<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/08/28/octopress-failed-to-read-yaml/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Octopress failed to read_yaml if your markdown file is GBK encoding.
+edit <strong>Ruby1.9.3\lib\ruby\gems\1.9.1\gems\jekyll-0.11.2\lib\jekyll\convertible.rb</strong>
+as follow</p>
+
+<figure class='code'><figcaption><span>convertible.rb line#29</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">read_yaml</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="nb">name</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="nb">name</span><span class="p">))</span><span class="o">.</span><span class="n">force_encoding</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="nb">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=~</span> <span class="sr">/^(---\s*\n.*?\n?)^(---\s*$\n?)/m</span>
+</span><span class='line'>    <span class="nb">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="vg">$POSTMATCH</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">begin</span>
+</span><span class='line'>      <span class="nb">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="no">YAML</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="vg">$1</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">e</span>
+</span><span class='line'>      <span class="nb">puts</span> <span class="s2">&quot;YAML Exception reading </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">: </span><span class="si">#{</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nb">self</span><span class="o">.</span><span class="n">data</span> <span class="o">||=</span> <span class="p">{}</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>force_encoding will do the trick.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2012/08/28/keycode-when-ctrl-pressed/">e.keyCode When Ctrl Pressed</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-28T15:53:00+08:00" pubdate data-updated="true">Aug 28<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/08/28/keycode-when-ctrl-pressed/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span>e.keyCode may be 13 or 10</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">textarea</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;keypress&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="cm">/**</span>
+</span><span class='line'><span class="cm">    * Some browsers will send keyCode == 10 instead of keyCode == 13 when using the ctrl modifier key</span>
+</span><span class='line'><span class="cm">    * (some browsers will send it even when you aren&#39;t using the ctrl modifier key).</span>
+</span><span class='line'><span class="cm">    */</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">ctrlKey</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">===</span> <span class="mi">13</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">===</span> <span class="mi">10</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">//do something</span>
+</span><span class='line'>        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
         <h1 class="entry-title"><a href="/blog/2012/08/22/setup-octopress-on-windows/">Setup Octopress on Windows 7</a></h1>
       
     
@@ -145,6 +280,19 @@ rake -T查看可用的task rake new_post[&#8220; &hellip;">
 然后git clone octopress
 octopress目录下有个rakefile
 rake -T查看可用的task</p>
+
+<!-- <div id="bmap_434" class="bmap" style="width:300px;height:400px;">
+</div>
+<script type="javascript">
+$(function(){
+debugger;
+var map = new BMap.Map("bmap_434");
+var point = new BMap.Point(116.404, 39.915);
+map.centerAndZoom(point,15);
+});
+</script>
+ &#8211;>
+
 
 <p>rake new_post[&#8220;post title&#8221;]
 在/source/_post下生成一个markdown文件，
@@ -345,6 +493,14 @@ instance method of that function(`class&#8217;).</p>
 </section><section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/08/28/octopress-failed-to-read-yaml/">Octopress failed to read_yaml</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/08/28/keycode-when-ctrl-pressed/">e.keyCode when ctrl pressed</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/08/22/setup-octopress-on-windows/">Setup Octopress on Windows 7</a>
