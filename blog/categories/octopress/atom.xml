@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | Aztack's Blog]]></title>
   <link href="http://aztack.github.com/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://aztack.github.com/"/>
-  <updated>2012-10-10T15:59:02+08:00</updated>
+  <updated>2012-10-10T16:05:51+08:00</updated>
   <id>http://aztack.github.com/</id>
   <author>
     <name><![CDATA[aztack]]></name>
@@ -58,22 +58,8 @@ end
 先安装 ruby 1.9.3和DevKit
 然后git clone octopress
 octopress目录下有个rakefile
-rake -T查看可用的task</p>
-
-<!-- <div id="bmap_571" class="bmap" style="width:300px;height:400px;">
-</div>
-<script type="javascript">
-$(function(){
-debugger;
-var map = new BMap.Map("bmap_571");
-var point = new BMap.Point(116.404, 39.915);
-map.centerAndZoom(point,15);
-});
-</script>
- -->
-
-
-<p>rake new_post["post title"]
+rake -T查看可用的task
+rake new_post["post title"]
 在/source/_post下生成一个markdown文件，
 编辑markedown文件为blog内容</p>
 
