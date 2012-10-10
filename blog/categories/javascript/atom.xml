@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | Aztack's Blog]]></title>
   <link href="http://aztack.github.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://aztack.github.com/"/>
-  <updated>2012-08-28T16:32:06+08:00</updated>
+  <updated>2012-10-10T15:43:44+08:00</updated>
   <id>http://aztack.github.com/</id>
   <author>
     <name><![CDATA[aztack]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[srcElement-is-undefined-in-firefox11]]></title>
+    <link href="http://aztack.github.com/blog/2012/09/10/srcelement-is-undefined-in-firefox11/"/>
+    <updated>2012-09-10T14:08:00+08:00</updated>
+    <id>http://aztack.github.com/blog/2012/09/10/srcelement-is-undefined-in-firefox11</id>
+    <content type="html"><![CDATA[<p>```javascript
+element.bind('mousedown',function(e){</p>
+
+<pre><code>//srcElement is undefined in firefox11 use target in original event instead
+var target = e.srcElement || e.originalEvent.target;
+</code></pre>
+
+<p>});
+```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[e.keyCode when ctrl pressed]]></title>
@@ -82,8 +99,14 @@ obj.greeting = function(){
 <p>``` ruby define singleton method in ruby</p>
 
 <pre><code>obj = {}
-def obj.greeting
+def obj.greeting1
     puts 'hi'
+end
+
+class &lt;&lt; obj
+    def greeting2
+        puts 'hello'
+    end
 end
 </code></pre>
 
@@ -121,8 +144,49 @@ Clazz.classMethod = function(){};
 <p>``` ruby define class method in ruby</p>
 
 <pre><code>class Clazz
-    define self.classMethod;end
+    define self.classMethod1;end
+
+    class &lt;&lt; self
+        def classMethod2;end
+    end
 end
+</code></pre>
+
+<p>```</p>
+
+<h2>Define attribute</h2>
+
+<p>``` javascript</p>
+
+<pre><code>function Klass(){
+    this.name = 'klass'
+}
+Klass.prototype.attr = 1;
+
+k = new Klass();
+k.attr = 123;
+k.attr #=&gt; 123
+k.name #=&gt; 'klass'
+(new Klass()).attr #=&gt; 1
+(new Klass()).name #=&gt; 'klass'
+</code></pre>
+
+<p>```</p>
+
+<p>``` ruby</p>
+
+<pre><code>Klass = Class.new
+k = Klass.new
+
+k.instance_variable_get(:@attr) #=&gt; nil
+k.instance_variable_set(:@attr,123) #=&gt; 123
+k.instance_variable_get(:@attr) #=&gt; 123
+
+k.attr #=&gt; undefined method `attr'
+def k.attr;@attr;end
+k.attr #=&gt; 123
+
+Klass.new.attr #=&gt; undefined method `attr'
 </code></pre>
 
 <p>```</p>

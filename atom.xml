@@ -4,7 +4,7 @@
   <title><![CDATA[Aztack's Blog]]></title>
   <link href="http://aztack.github.com/atom.xml" rel="self"/>
   <link href="http://aztack.github.com/"/>
-  <updated>2012-08-28T16:32:06+08:00</updated>
+  <updated>2012-10-10T15:43:44+08:00</updated>
   <id>http://aztack.github.com/</id>
   <author>
     <name><![CDATA[aztack]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[srcElement-is-undefined-in-firefox11]]></title>
+    <link href="http://aztack.github.com/blog/2012/09/10/srcelement-is-undefined-in-firefox11/"/>
+    <updated>2012-09-10T14:08:00+08:00</updated>
+    <id>http://aztack.github.com/blog/2012/09/10/srcelement-is-undefined-in-firefox11</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">element</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;mousedown&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+</span><span class='line'>  <span class="c1">//srcElement is undefined in firefox11 use target in original event instead</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">srcElement</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">originalEvent</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress failed to read_yaml]]></title>
@@ -102,12 +120,12 @@ as follow</p>
 octopress目录下有个rakefile
 rake -T查看可用的task</p>
 
-<!-- <div id="bmap_709" class="bmap" style="width:300px;height:400px;">
+<!-- <div id="bmap_352" class="bmap" style="width:300px;height:400px;">
 </div>
 <script type="javascript">
 $(function(){
 debugger;
-var map = new BMap.Map("bmap_709");
+var map = new BMap.Map("bmap_352");
 var point = new BMap.Point(116.404, 39.915);
 map.centerAndZoom(point,15);
 });
@@ -205,9 +223,21 @@ instance method of that function(`class&#8217;).</p>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">obj</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span class='line'><span class="k">def</span> <span class="nc">obj</span><span class="o">.</span><span class="nf">greeting</span>
+</span><span class='line'><span class="k">def</span> <span class="nc">obj</span><span class="o">.</span><span class="nf">greeting1</span>
 </span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;hi&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="n">obj</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">greeting2</span>
+</span><span class='line'>      <span class="nb">puts</span> <span class="s1">&#39;hello&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -246,9 +276,73 @@ instance method of that function(`class&#8217;).</p>
 <figure class='code'><figcaption><span>define class method in ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Clazz</span>
-</span><span class='line'>  <span class="n">define</span> <span class="nb">self</span><span class="o">.</span><span class="n">classMethod</span><span class="p">;</span><span class="k">end</span>
+</span><span class='line'>  <span class="n">define</span> <span class="nb">self</span><span class="o">.</span><span class="n">classMethod1</span><span class="p">;</span><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">classMethod2</span><span class="p">;</span><span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Define attribute</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">Klass</span><span class="p">(){</span>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;klass&#39;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nx">Klass</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">attr</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">k</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Klass</span><span class="p">();</span>
+</span><span class='line'><span class="nx">k</span><span class="p">.</span><span class="nx">attr</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
+</span><span class='line'><span class="nx">k</span><span class="p">.</span><span class="nx">attr</span> <span class="err">#</span><span class="o">=&gt;</span> <span class="mi">123</span>
+</span><span class='line'><span class="nx">k</span><span class="p">.</span><span class="nx">name</span> <span class="err">#</span><span class="o">=&gt;</span> <span class="s1">&#39;klass&#39;</span>
+</span><span class='line'><span class="p">(</span><span class="k">new</span> <span class="nx">Klass</span><span class="p">()).</span><span class="nx">attr</span> <span class="err">#</span><span class="o">=&gt;</span> <span class="mi">1</span>
+</span><span class='line'><span class="p">(</span><span class="k">new</span> <span class="nx">Klass</span><span class="p">()).</span><span class="nx">name</span> <span class="err">#</span><span class="o">=&gt;</span> <span class="s1">&#39;klass&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Klass</span> <span class="o">=</span> <span class="no">Class</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">k</span> <span class="o">=</span> <span class="no">Klass</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">k</span><span class="o">.</span><span class="n">instance_variable_get</span><span class="p">(:</span><span class="vi">@attr</span><span class="p">)</span> <span class="c1">#=&gt; nil</span>
+</span><span class='line'><span class="n">k</span><span class="o">.</span><span class="n">instance_variable_set</span><span class="p">(:</span><span class="vi">@attr</span><span class="p">,</span><span class="mi">123</span><span class="p">)</span> <span class="c1">#=&gt; 123</span>
+</span><span class='line'><span class="n">k</span><span class="o">.</span><span class="n">instance_variable_get</span><span class="p">(:</span><span class="vi">@attr</span><span class="p">)</span> <span class="c1">#=&gt; 123</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">k</span><span class="o">.</span><span class="n">attr</span> <span class="c1">#=&gt; undefined method `attr&#39;</span>
+</span><span class='line'><span class="k">def</span> <span class="nc">k</span><span class="o">.</span><span class="nf">attr</span><span class="p">;</span><span class="vi">@attr</span><span class="p">;</span><span class="k">end</span>
+</span><span class='line'><span class="n">k</span><span class="o">.</span><span class="n">attr</span> <span class="c1">#=&gt; 123</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Klass</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">attr</span> <span class="c1">#=&gt; undefined method `attr&#39;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>

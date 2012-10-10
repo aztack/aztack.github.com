@@ -5,11 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Horse training place under the Red-Mountain - Aztack's Blog</title>
+  <title>srcElement-is-undefined-in-firefox11 - Aztack's Blog</title>
   <meta name="author" content="aztack">
 
   
-  <meta name="description" content=" ">
+  <meta name="description" content="1
+2
+3
+4
+element.bind(&#39;mousedown&#39;,function(e){ //srcElement is undefined in firefox11 use target in original event instead var target = e. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +22,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://aztack.github.com/gallery/2012-08-28-horse-training-place-under-red-mountain.html">
+  <link rel="canonical" href="http://aztack.github.com/blog/2012/09/10/srcelement-is-undefined-in-firefox11/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -105,7 +109,7 @@
   <header>
     
       
-        <h1 class="entry-title">Horse Training Place Under the Red-Mountain</h1>
+        <h1 class="entry-title">srcElement-is-undefined-in-firefox11</h1>
       
     
     
@@ -122,7 +126,7 @@
   
 
 
-<time datetime="2012-08-28T16:22:00+08:00" pubdate data-updated="true">Aug 28<span>th</span>, 2012</time>
+<time datetime="2012-09-10T14:08:00+08:00" pubdate data-updated="true">Sep 10<span>th</span>, 2012</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -131,18 +135,16 @@
   </header>
 
 
-<div class="entry-content"><p><img class="left" src="http://p.kaixin001.com/privacy/photo/43/42/714456_869434248_rotate.jpg">
-<img class="left" src="http://p.kaixin001.com/privacy/photo/43/44/714456_869434487_rotate.jpg">
-<img class="left" src="http://p.kaixin001.com/privacy/photo/43/45/714456_869434580_rotate.jpg">
-<img class="left" src="http://p.kaixin001.com/privacy/photo/43/47/714456_869434721_rotate.jpg">
-<img class="left" src="http://p.kaixin001.com/privacy/photo/43/68/714456_869436866_rotate.jpg">
-<img class="left" src="http://p.kaixin001.com/privacy/photo/43/83/714456_869438340_rotate.jpg">
-<img class="left" src="http://p.kaixin001.com/privacy/photo/43/86/714456_869438654_rotate.jpg">
-<img class="left" src="http://p.kaixin001.com/privacy/photo/43/87/714456_869438768_rotate.jpg">
-<img class="left" src="http://p.kaixin001.com/privacy/photo/43/89/714456_869438919_rotate.jpg">
-<img class="left" src="http://p.kaixin001.com/privacy/photo/43/97/714456_869439708_rotate.jpg">
-<img class="left" src="http://p.kaixin001.com/privacy/photo/43/98/714456_869439844_rotate.jpg">
-<img class="left" src="http://p.kaixin001.com/privacy/photo/44/13/714456_869441384_rotate.jpg"></p>
+<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">element</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;mousedown&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+</span><span class='line'>  <span class="c1">//srcElement is undefined in firefox11 use target in original event instead</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">srcElement</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">originalEvent</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
@@ -165,12 +167,12 @@
   
 
 
-<time datetime="2012-08-28T16:22:00+08:00" pubdate data-updated="true">Aug 28<span>th</span>, 2012</time>
+<time datetime="2012-09-10T14:08:00+08:00" pubdate data-updated="true">Sep 10<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/photo/'>photo</a>, <a class='category' href='/blog/categories/travel/'>travel</a>
+    <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/webdev/'>webdev</a>
   
 </span>
 
@@ -179,7 +181,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://aztack.github.com/gallery/2012-08-28-horse-training-place-under-red-mountain.html" data-via="" data-counturl="http://aztack.github.com/gallery/2012-08-28-horse-training-place-under-red-mountain.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://aztack.github.com/blog/2012/09/10/srcelement-is-undefined-in-firefox11/" data-via="" data-counturl="http://aztack.github.com/blog/2012/09/10/srcelement-is-undefined-in-firefox11/" >Tweet</a>
   
   
   
@@ -187,6 +189,8 @@
 
     
     <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2012/08/28/octopress-failed-to-read-yaml/" title="Previous Post: Octopress failed to read_yaml">&laquo; Octopress failed to read_yaml</a>
       
       
     </p>
@@ -297,8 +301,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://aztack.github.com/gallery/2012-08-28-horse-training-place-under-red-mountain.html';
-        var disqus_url = 'http://aztack.github.com/gallery/2012-08-28-horse-training-place-under-red-mountain.html';
+        var disqus_identifier = 'http://aztack.github.com/blog/2012/09/10/srcelement-is-undefined-in-firefox11/';
+        var disqus_url = 'http://aztack.github.com/blog/2012/09/10/srcelement-is-undefined-in-firefox11/';
         var disqus_script = 'embed.js';
       
     (function () {
