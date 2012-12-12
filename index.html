@@ -13,7 +13,14 @@
 2
 3
 4
-element.bind(&#39;mousedown&#39;,function(e){ //srcElement is undefined in firefox11 use target in original event instead var target = e. &hellip;">
+5
+6
+7
+8
+9
+10
+var mouseoutEventName = &#39;mouseout.namespace&#39;;
+$(document) .unbind(mouseoutEventName) .bind(moumouseoutEventNameseEvent, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -105,6 +112,67 @@ element.bind(&#39;mousedown&#39;,function(e){ //srcElement is undefined in firef
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2012/12/12/detect-mouseout-in-ie678/">Detect Mouseout in IE678</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-12T16:49:00+08:00" pubdate data-updated="true">Dec 12<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/12/12/detect-mouseout-in-ie678/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">mouseoutEventName</span> <span class="o">=</span> <span class="s1">&#39;mouseout.namespace&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">unbind</span><span class="p">(</span><span class="nx">mouseoutEventName</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">moumouseoutEventNameseEvent</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">e</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">event</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">from</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">relatedTarget</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">toElement</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">from</span> <span class="o">||</span> <span class="nx">from</span><span class="p">.</span><span class="nx">nodeName</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span> <span class="o">===</span> <span class="s2">&quot;HTML&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">//mouse move out window(document)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -609,6 +677,10 @@ instance method of that function(`class&#8217;).</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/12/12/detect-mouseout-in-ie678/">Detect Mouseout in IE678</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/10/srcelement-is-undefined-in-firefox11/">srcElement-is-undefined-in-firefox11</a>
       </li>
     
@@ -622,10 +694,6 @@ instance method of that function(`class&#8217;).</p>
     
       <li class="post">
         <a href="/blog/2012/08/22/setup-octopress-on-windows/">Setup Octopress on Windows 7</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/08/16/Define-method-in-JavaScript-and-Ruby/">Define method in JavaScript and Ruby</a>
       </li>
     
   </ul>
