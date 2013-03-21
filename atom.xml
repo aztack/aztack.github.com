@@ -4,7 +4,7 @@
   <title><![CDATA[Aztack's Blog]]></title>
   <link href="http://aztack.github.com/atom.xml" rel="self"/>
   <link href="http://aztack.github.com/"/>
-  <updated>2013-03-21T14:22:34+08:00</updated>
+  <updated>2013-03-21T14:23:45+08:00</updated>
   <id>http://aztack.github.com/</id>
   <author>
     <name><![CDATA[aztack]]></name>
@@ -39,6 +39,7 @@
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
+<span class='line-number'>22</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;rest_client&#39;</span>
 </span><span class='line'><span class="n">cookies</span> <span class="o">=</span> <span class="kp">nil</span>
 </span><span class='line'><span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
@@ -53,6 +54,7 @@
 </span><span class='line'><span class="no">RestClient</span><span class="o">.</span><span class="n">Request</span><span class="o">.</span><span class="n">new</span><span class="p">({</span>
 </span><span class='line'>    <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
 </span><span class='line'>    <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://www.yoursite.com/upload.php&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">:cookies</span> <span class="o">=&gt;</span> <span class="n">cookies</span><span class="p">,</span>
 </span><span class='line'>    <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
 </span><span class='line'>  <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
 </span><span class='line'>  <span class="ss">:filepath</span> <span class="o">=&gt;[</span><span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;a.jpg&#39;</span><span class="p">),</span><span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;b.jpg&#39;</span><span class="p">)</span><span class="o">]</span>
