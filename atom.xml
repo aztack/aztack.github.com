@@ -4,7 +4,7 @@
   <title><![CDATA[Aztack's Blog]]></title>
   <link href="http://aztack.github.com/atom.xml" rel="self"/>
   <link href="http://aztack.github.com/"/>
-  <updated>2013-03-21T13:47:35+08:00</updated>
+  <updated>2013-03-21T14:22:34+08:00</updated>
   <id>http://aztack.github.com/</id>
   <author>
     <name><![CDATA[aztack]]></name>
@@ -14,7 +14,61 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Start_IRB_in_Context_of_An_Object]]></title>
+    <title type="html"><![CDATA[Upload File With RestClient]]></title>
+    <link href="http://aztack.github.com/blog/2013/03/21/upload-file-with-restclient/"/>
+    <updated>2013-03-21T14:03:00+08:00</updated>
+    <id>http://aztack.github.com/blog/2013/03/21/upload-file-with-restclient</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;rest_client&#39;</span>
+</span><span class='line'><span class="n">cookies</span> <span class="o">=</span> <span class="kp">nil</span>
+</span><span class='line'><span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span><span class='line'>    <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://www.yoursite.com&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:username</span><span class="o">=&gt;</span><span class="s1">&#39;your account name&#39;</span><span class="p">,</span><span class="ss">:password</span><span class="o">=&gt;</span><span class="s1">&#39;password&#39;</span><span class="p">}</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'><span class="n">request</span><span class="o">.</span><span class="n">execute</span> <span class="k">do</span> <span class="o">|</span><span class="n">response</span><span class="p">,</span><span class="n">request</span><span class="p">,</span><span class="n">result</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">cookies</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">cookies</span> <span class="c1">#save cookies for further use</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">RestClient</span><span class="o">.</span><span class="n">Request</span><span class="o">.</span><span class="n">new</span><span class="p">({</span>
+</span><span class='line'>    <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://www.yoursite.com/upload.php&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>  <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:filepath</span> <span class="o">=&gt;[</span><span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;a.jpg&#39;</span><span class="p">),</span><span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;b.jpg&#39;</span><span class="p">)</span><span class="o">]</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">})</span><span class="o">.</span><span class="n">execute</span> <span class="k">do</span> <span class="o">|</span><span class="n">resp</span><span class="p">,</span><span class="n">req</span><span class="p">,</span><span class="n">result</span><span class="o">|</span>
+</span><span class='line'>    <span class="vg">$stdout</span><span class="o">.</span><span class="n">puts</span> <span class="n">resp</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Reference: https://github.com/adamwiggins/rest-client</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Start IRB in Context of An Object]]></title>
     <link href="http://aztack.github.com/blog/2013/03/21/start-irb-in-context-of-an-object/"/>
     <updated>2013-03-21T13:40:00+08:00</updated>
     <id>http://aztack.github.com/blog/2013/03/21/start-irb-in-context-of-an-object</id>
@@ -58,7 +112,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Connect-to-MySQL-on-Ubuntu-VM]]></title>
+    <title type="html"><![CDATA[Connect to MySQL on Ubuntu VM]]></title>
     <link href="http://aztack.github.com/blog/2013/01/17/connect-to-mysql-on-ubuntu-vm/"/>
     <updated>2013-01-17T16:03:00+08:00</updated>
     <id>http://aztack.github.com/blog/2013/01/17/connect-to-mysql-on-ubuntu-vm</id>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | Aztack's Blog]]></title>
   <link href="http://aztack.github.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://aztack.github.com/"/>
-  <updated>2013-03-21T13:47:35+08:00</updated>
+  <updated>2013-03-21T14:22:34+08:00</updated>
   <id>http://aztack.github.com/</id>
   <author>
     <name><![CDATA[aztack]]></name>
@@ -12,6 +12,80 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Upload File With RestClient]]></title>
+    <link href="http://aztack.github.com/blog/2013/03/21/upload-file-with-restclient/"/>
+    <updated>2013-03-21T14:03:00+08:00</updated>
+    <id>http://aztack.github.com/blog/2013/03/21/upload-file-with-restclient</id>
+    <content type="html"><![CDATA[<p>``` ruby
+require 'rest_client'
+cookies = nil
+request = RestClient::Request.new(</p>
+
+<pre><code>:method =&gt; :post,
+:url =&gt; 'http://www.yoursite.com',
+:payload =&gt; {:username=&gt;'your account name',:password=&gt;'password'}
+</code></pre>
+
+<p>)
+request.execute do |response,request,result|</p>
+
+<pre><code>cookies = response.cookies #save cookies for further use
+</code></pre>
+
+<p>end</p>
+
+<p>RestClient.Request.new({</p>
+
+<pre><code>:method =&gt; :post,
+:url =&gt; 'http://www.yoursite.com/upload.php',
+:payload =&gt; {
+:multipart =&gt; true,
+:filepath =&gt;[File.new('a.jpg'),File.new('b.jpg')]
+}
+</code></pre>
+
+<p>}).execute do |resp,req,result|</p>
+
+<pre><code>$stdout.puts resp
+</code></pre>
+
+<p>end
+```
+Reference: https://github.com/adamwiggins/rest-client</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Start IRB in Context of An Object]]></title>
+    <link href="http://aztack.github.com/blog/2013/03/21/start-irb-in-context-of-an-object/"/>
+    <updated>2013-03-21T13:40:00+08:00</updated>
+    <id>http://aztack.github.com/blog/2013/03/21/start-irb-in-context-of-an-object</id>
+    <content type="html"><![CDATA[<p>``` ruby
+require 'irb'
+require 'irb/completion'</p>
+
+<p>class Clazz</p>
+
+<pre><code>def start_irb 
+IRB.setup nil
+IRB.conf[:MAIN_CONTEXT] = IRB::Irb.new.context
+IRB.conf[:PROMPT_MODE] = :SIMPLE
+
+#puts this line outside this method will not work
+require 'irb/ext/multi-irb'
+
+#clear parameter
+ARGV.clear
+IRB.irb nil, self #&lt;--- pass context
+end
+</code></pre>
+
+<p>end
+```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress failed to read_yaml]]></title>

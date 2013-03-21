@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: linux | Aztack's Blog]]></title>
+  <link href="http://aztack.github.com/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://aztack.github.com/"/>
+  <updated>2013-03-21T14:22:34+08:00</updated>
+  <id>http://aztack.github.com/</id>
+  <author>
+    <name><![CDATA[aztack]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Connect to MySQL on Ubuntu VM]]></title>
+    <link href="http://aztack.github.com/blog/2013/01/17/connect-to-mysql-on-ubuntu-vm/"/>
+    <updated>2013-01-17T16:03:00+08:00</updated>
+    <id>http://aztack.github.com/blog/2013/01/17/connect-to-mysql-on-ubuntu-vm</id>
+    <content type="html"><![CDATA[<p>Step 1:
+Comment out <code>bind-address</code> on /etc/mysql/my.conf
+or change it to your VM ip address.</p>
+
+<p>```</p>
+
+<h1>bind-address = 127.0.0.1</h1>
+
+<p>```</p>
+
+<p>Step 2:
+Create a MySQL user with full/part privileges on all database:</p>
+
+<p>```
+create user 'username'@'localhost' identified by 'password';
+grant all privileges on <em>.</em> to 'username'@'localhost' with grant option;</p>
+
+<p>create user 'username'@'%' identified by 'password';
+grant all privileges on <em>.</em> to 'username'@'%' with grant option;
+```
+Step 3:
+Open your Ubuntu VM, goto Setting->Network->Adapter1 tab->Port Forwarding, add rule:
+name:mysql
+protocol:tcp
+host ip: [blank]
+host port: 3306
+guest ip: [blank]
+guest port: 3306</p>
+
+<p>click ok</p>
+
+<p>step 4:
+Connect MySQL in your host machine,
+<code>
+c:&gt;mysql -uusername -ppassword
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+mysql&gt;
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>
