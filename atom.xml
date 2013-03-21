@@ -4,7 +4,7 @@
   <title><![CDATA[Aztack's Blog]]></title>
   <link href="http://aztack.github.com/atom.xml" rel="self"/>
   <link href="http://aztack.github.com/"/>
-  <updated>2012-12-27T11:14:14+08:00</updated>
+  <updated>2013-03-21T13:46:45+08:00</updated>
   <id>http://aztack.github.com/</id>
   <author>
     <name><![CDATA[aztack]]></name>
@@ -12,6 +12,102 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Start_IRB_in_Context_of_An_Object]]></title>
+    <link href="http://aztack.github.com/blog/2013/03/21/start-irb-in-context-of-an-object/"/>
+    <updated>2013-03-21T13:40:00+08:00</updated>
+    <id>http://aztack.github.com/blog/2013/03/21/start-irb-in-context-of-an-object</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;irb&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;irb/completion&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Clazz</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">start_irb</span>
+</span><span class='line'>  <span class="no">IRB</span><span class="o">.</span><span class="n">setup</span> <span class="kp">nil</span>
+</span><span class='line'>  <span class="no">IRB</span><span class="o">.</span><span class="n">conf</span><span class="o">[</span><span class="ss">:MAIN_CONTEXT</span><span class="o">]</span> <span class="o">=</span> <span class="no">IRB</span><span class="o">::</span><span class="no">Irb</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">context</span>
+</span><span class='line'>  <span class="no">IRB</span><span class="o">.</span><span class="n">conf</span><span class="o">[</span><span class="ss">:PROMPT_MODE</span><span class="o">]</span> <span class="o">=</span> <span class="ss">:SIMPLE</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="c1">#puts this line outside this method will not work</span>
+</span><span class='line'>  <span class="nb">require</span> <span class="s1">&#39;irb/ext/multi-irb&#39;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">#clear parameter</span>
+</span><span class='line'>  <span class="no">ARGV</span><span class="o">.</span><span class="n">clear</span>
+</span><span class='line'>  <span class="no">IRB</span><span class="o">.</span><span class="n">irb</span> <span class="kp">nil</span><span class="p">,</span> <span class="nb">self</span> <span class="c1">#&lt;--- pass context</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Connect-to-MySQL-on-Ubuntu-VM]]></title>
+    <link href="http://aztack.github.com/blog/2013/01/17/connect-to-mysql-on-ubuntu-vm/"/>
+    <updated>2013-01-17T16:03:00+08:00</updated>
+    <id>http://aztack.github.com/blog/2013/01/17/connect-to-mysql-on-ubuntu-vm</id>
+    <content type="html"><![CDATA[<p>Step 1:
+Comment out <code>bind-address</code> on /etc/mysql/my.conf
+or change it to your VM ip address.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#bind-address = 127.0.0.1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Step 2:
+Create a MySQL user with full/part privileges on all database:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>create user 'username'@'localhost' identified by 'password';
+</span><span class='line'>grant all privileges on *.* to 'username'@'localhost' with grant option;
+</span><span class='line'>
+</span><span class='line'>create user 'username'@'%' identified by 'password';
+</span><span class='line'>grant all privileges on *.* to 'username'@'%' with grant option;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Step 3:
+Open your Ubuntu VM, goto Setting->Network->Adapter1 tab->Port Forwarding, add rule:
+name:mysql
+protocol:tcp
+host ip: [blank]
+host port: 3306
+guest ip: [blank]
+guest port: 3306</p>
+
+<p>click ok</p>
+
+<p>step 4:
+Connect MySQL in your host machine,</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>c:&gt;mysql -uusername -ppassword
+</span><span class='line'>Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+</span><span class='line'>mysql&gt;</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Detect Mouseout in IE678]]></title>

@@ -5,11 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: javascript - Aztack's Blog</title>
+  <title>Connect-to-MySQL-on-Ubuntu-VM - Aztack's Blog</title>
   <meta name="author" content="aztack">
 
   
-  <meta name="description" content="Category: javascript">
+  <meta name="description" content="Step 1:
+Comment out bind-address on /etc/mysql/my.conf
+or change it to your VM ip address. 1
+#bind-address = 127.0.0.1 Step 2:
+Create a MySQL user &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +22,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://aztack.github.comblog/categories/javascript/">
+  <link rel="canonical" href="http://aztack.github.com/blog/2013/01/17/connect-to-mysql-on-ubuntu-vm/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -100,64 +104,134 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Javascript</h1>
+    
+      
+        <h1 class="entry-title">Connect-to-MySQL-on-Ubuntu-VM</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-17T16:03:00+08:00" pubdate data-updated="true">Jan 17<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>Step 1:
+Comment out <code>bind-address</code> on /etc/mysql/my.conf
+or change it to your VM ip address.</p>
 
-  
-  <h2>2012</h2>
-
-<article>
-  
-<h1><a href="/blog/2012/09/10/srcelement-is-undefined-in-firefox11/">srcElement-is-undefined-in-firefox11</a></h1>
-<time datetime="2012-09-10T14:08:00+08:00" pubdate><span class='month'>Sep</span> <span class='day'>10</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/webdev/'>webdev</a></span>
-</footer>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#bind-address = 127.0.0.1</span></code></pre></td></tr></table></div></figure>
 
 
-</article>
+<p>Step 2:
+Create a MySQL user with full/part privileges on all database:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>create user 'username'@'localhost' identified by 'password';
+</span><span class='line'>grant all privileges on *.* to 'username'@'localhost' with grant option;
+</span><span class='line'>
+</span><span class='line'>create user 'username'@'%' identified by 'password';
+</span><span class='line'>grant all privileges on *.* to 'username'@'%' with grant option;</span></code></pre></td></tr></table></div></figure>
 
 
+<p>Step 3:
+Open your Ubuntu VM, goto Setting->Network->Adapter1 tab->Port Forwarding, add rule:
+name:mysql
+protocol:tcp
+host ip: [blank]
+host port: 3306
+guest ip: [blank]
+guest port: 3306</p>
 
-<article>
-  
-<h1><a href="/blog/2012/08/28/keycode-when-ctrl-pressed/">e.keyCode when ctrl pressed</a></h1>
-<time datetime="2012-08-28T15:53:00+08:00" pubdate><span class='month'>Aug</span> <span class='day'>28</span> <span class='year'>2012</span></time>
+<p>click ok</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/web/'>web</a></span>
-</footer>
+<p>step 4:
+Connect MySQL in your host machine,</p>
 
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2012/08/16/Define-method-in-JavaScript-and-Ruby/">Define method in JavaScript and Ruby</a></h1>
-<time datetime="2012-08-16T14:55:00+08:00" pubdate><span class='month'>Aug</span> <span class='day'>16</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a></span>
-</footer>
-
-
-</article>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>c:&gt;mysql -uusername -ppassword
+</span><span class='line'>Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+</span><span class='line'>mysql&gt;</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">aztack</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-17T16:03:00+08:00" pubdate data-updated="true">Jan 17<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://aztack.github.com/blog/2013/01/17/connect-to-mysql-on-ubuntu-vm/" data-via="" data-counturl="http://aztack.github.com/blog/2013/01/17/connect-to-mysql-on-ubuntu-vm/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2012/12/12/detect-mouseout-in-ie678/" title="Previous Post: Detect Mouseout in IE678">&laquo; Detect Mouseout in IE678</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/blog/2013/03/21/start-irb-in-context-of-an-object/" title="Next Post: Start_IRB_in_Context_of_An_Object">Start_IRB_in_Context_of_An_Object &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -256,7 +330,10 @@
       var disqus_shortname = 'aztackblog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://aztack.github.com/blog/2013/01/17/connect-to-mysql-on-ubuntu-vm/';
+        var disqus_url = 'http://aztack.github.com/blog/2013/01/17/connect-to-mysql-on-ubuntu-vm/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -5,11 +5,29 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: javascript - Aztack's Blog</title>
+  <title>Start_IRB_in_Context_of_An_Object - Aztack's Blog</title>
   <meta name="author" content="aztack">
 
   
-  <meta name="description" content="Category: javascript">
+  <meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+require &#39;irb&#39;
+require &#39;irb/completion&#39; class Clazz def start_irb IRB.setup nil IRB.conf[: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +36,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://aztack.github.comblog/categories/javascript/">
+  <link rel="canonical" href="http://aztack.github.com/blog/2013/03/21/start-irb-in-context-of-an-object/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -100,64 +118,124 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Javascript</h1>
+    
+      
+        <h1 class="entry-title">Start_IRB_in_Context_of_An_Object</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-21T13:40:00+08:00" pubdate data-updated="true">Mar 21<span>st</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
-
-  
-  <h2>2012</h2>
-
-<article>
-  
-<h1><a href="/blog/2012/09/10/srcelement-is-undefined-in-firefox11/">srcElement-is-undefined-in-firefox11</a></h1>
-<time datetime="2012-09-10T14:08:00+08:00" pubdate><span class='month'>Sep</span> <span class='day'>10</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/webdev/'>webdev</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2012/08/28/keycode-when-ctrl-pressed/">e.keyCode when ctrl pressed</a></h1>
-<time datetime="2012-08-28T15:53:00+08:00" pubdate><span class='month'>Aug</span> <span class='day'>28</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/web/'>web</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2012/08/16/Define-method-in-JavaScript-and-Ruby/">Define method in JavaScript and Ruby</a></h1>
-<time datetime="2012-08-16T14:55:00+08:00" pubdate><span class='month'>Aug</span> <span class='day'>16</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a></span>
-</footer>
-
-
-</article>
+<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;irb&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;irb/completion&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Clazz</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">start_irb</span>
+</span><span class='line'>  <span class="no">IRB</span><span class="o">.</span><span class="n">setup</span> <span class="kp">nil</span>
+</span><span class='line'>  <span class="no">IRB</span><span class="o">.</span><span class="n">conf</span><span class="o">[</span><span class="ss">:MAIN_CONTEXT</span><span class="o">]</span> <span class="o">=</span> <span class="no">IRB</span><span class="o">::</span><span class="no">Irb</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">context</span>
+</span><span class='line'>  <span class="no">IRB</span><span class="o">.</span><span class="n">conf</span><span class="o">[</span><span class="ss">:PROMPT_MODE</span><span class="o">]</span> <span class="o">=</span> <span class="ss">:SIMPLE</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="c1">#puts this line outside this method will not work</span>
+</span><span class='line'>  <span class="nb">require</span> <span class="s1">&#39;irb/ext/multi-irb&#39;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">#clear parameter</span>
+</span><span class='line'>  <span class="no">ARGV</span><span class="o">.</span><span class="n">clear</span>
+</span><span class='line'>  <span class="no">IRB</span><span class="o">.</span><span class="n">irb</span> <span class="kp">nil</span><span class="p">,</span> <span class="nb">self</span> <span class="c1">#&lt;--- pass context</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">aztack</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-21T13:40:00+08:00" pubdate data-updated="true">Mar 21<span>st</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://aztack.github.com/blog/2013/03/21/start-irb-in-context-of-an-object/" data-via="" data-counturl="http://aztack.github.com/blog/2013/03/21/start-irb-in-context-of-an-object/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2013/01/17/connect-to-mysql-on-ubuntu-vm/" title="Previous Post: Connect-to-MySQL-on-Ubuntu-VM">&laquo; Connect-to-MySQL-on-Ubuntu-VM</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -256,7 +334,10 @@
       var disqus_shortname = 'aztackblog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://aztack.github.com/blog/2013/03/21/start-irb-in-context-of-an-object/';
+        var disqus_url = 'http://aztack.github.com/blog/2013/03/21/start-irb-in-context-of-an-object/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
